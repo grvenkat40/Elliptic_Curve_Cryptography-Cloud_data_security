@@ -1,0 +1,73 @@
+{% extends "ownerhome.html" %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        .containr {
+            width: 45%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 40px auto;
+        }
+
+        .containr img {
+            width: 60%;
+            height: 300px;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+            
+        }
+
+        .upload-form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body style="background-color: #f4f4f9;">
+
+    <div class="containr">
+        <img src="/static/images/i6.png" alt="Image Placeholder">
+        <div class="upload-form">
+            {% if messages %}
+            {% for message in messages %}
+            <center><p class="alert alert-success">{{ message }}</p></center>
+            {% endfor %}
+            {% endif %}
+            <h3>Upload Your File</h3>
+            <form action="{% url 'uploadfiles' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="file" accept=".txt, .pdf" required>
+                <br><br>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+{% endblock %}

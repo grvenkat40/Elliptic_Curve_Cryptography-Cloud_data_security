@@ -1,0 +1,28 @@
+Company 
+Register
+Login
+Add Interview Questions
+Manage Interview Questions
+Add Drive Details
+View Drive Details
+View College Drive Requests
+Shortlist Candidates
+Logout
+
+TPO
+Login
+View Company Drives
+View Drive Request Status
+View Drive Test Results
+View Finalized Candidates' Details
+Logout
+
+Student
+Register
+Login
+View Drive Details
+Apply for the Drive
+Attempt the Exam
+Write Programs
+View Results
+Logout

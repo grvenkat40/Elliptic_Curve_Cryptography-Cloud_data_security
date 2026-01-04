@@ -1,0 +1,53 @@
+{% extends "ownerhome.html" %}
+
+{% block content %}
+<div class="col-md-12">
+   <br><br> <center>
+        <h1>View my File</h1>
+    </center>
+</div>
+
+<!-- Display messages -->
+{% if messages %}
+    <div class="col-md-12">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<center>
+<!-- File Upload Form -->
+<table style="border: 2px solid rgb(203 217 3);width: 100%;overflow:auto">
+    <tr>
+        <th class="text-warning bg-dark">Id</th>
+        <th class="text-warning bg-dark">Owner Name</th>
+        <th class="text-warning bg-dark">Owner Email</th>
+        <th class="text-warning bg-dark">File name</th>
+        <th class="text-warning bg-dark">Secrate Key</th>
+        <th class="text-warning bg-dark">Uploaded Date</th>
+    </tr>
+    {% for row in viewfile %}
+    <tr>
+        <td class="text-info bg-dark">{{ row.id }}</td>
+        <td class="text-info bg-dark">{{ row.ownername }}</td>
+        <td class="text-info bg-dark">{{ row.owneremail }}</td>
+        <td class="text-info bg-dark">{{ row.filename }}</td>
+        <td class="text-info bg-dark">{{ row.filekey }}</td>
+        <td class="text-info bg-dark">{{ row.uploaded_at }}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+</center>
+
+<script type="text/javascript">
+    function confirmActivation() {
+        return confirm("Are you sure you want to activate this User?");
+    }
+</script>
+
+{% endblock %}

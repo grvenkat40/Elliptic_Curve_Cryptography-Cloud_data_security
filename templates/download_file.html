@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Decrypted File</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Include CSS if needed -->
+</head>
+<body>
+    <div class="container">
+        <h1>Download Your Decrypted File</h1>
+        
+        <!-- Check if there is a message from the server -->
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+        
+        <!-- Button to download the decrypted file -->
+        <a href="{% url 'decrypt_file' file_id %}" class="btn btn-primary">Download Decrypted File</a>
+    </div>
+</body>
+</html>

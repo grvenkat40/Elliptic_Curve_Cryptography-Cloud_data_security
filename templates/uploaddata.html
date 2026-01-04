@@ -1,0 +1,47 @@
+{% extends "ownerhome.html" %}
+
+{% block content %}
+<div class="col-md-12">
+    <center>
+        <h1>Upload File</h1>
+    </center>
+</div>
+
+<!-- Display messages -->
+{% if messages %}
+    <div class="col-md-12">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<center>
+<!-- File Upload Form -->
+<form id="request" class="main_form" action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="ownerid" value="{{ ownerid }}">
+    <input type="hidden" name="ownername" value="{{ name }}">
+    <input type="hidden" name="owneremail" value="{{ email }}">
+
+    <div class="col-md-6">
+        <input class="contactus" placeholder="File name" type="text" name="filedataname" required>
+    </div>
+    <div class="col-md-6">
+        <input class="contactus" placeholder="File" type="file" name="filedata" required>
+    </div>
+    <div class="col-md-12">
+        <button class="send_btn" type="submit" onclick="return confirmActivation(); ">Upload</button>
+    </div>
+</form>
+</center>
+
+<script type="text/javascript">
+    function confirmActivation() {
+        return confirm("Are you sure you want to Upload File Conform Once?");
+    }
+</script>
+
+{% endblock %}

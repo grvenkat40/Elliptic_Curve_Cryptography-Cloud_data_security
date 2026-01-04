@@ -1,0 +1,12 @@
+  <script>
+      $("#name").on("keyup", function () {
+        const value = $(this).val();
+        if (hasNumber(value)) {
+          alert("Numbers in name not allowed");
+          $(this).val(value.slice(0, value.length - 1));
+        }
+      });
+      function hasNumber(myString) {
+        return /\d/.test(myString);
+      }
+    </script>

@@ -1,0 +1,205 @@
+from tkinter import * 
+import tkinter  as tk
+from tkinter import messagebox
+import mysql.connector
+import os
+from tkinter import ttk
+import io
+import pandas as pd
+import tkinter  as tk 
+from PIL import Image, ImageTk
+from datetime import datetime
+from tkinter import filedialog
+from tkinter.filedialog import askopenfile
+from tkinter import messagebox as msg
+from PIL import Image, ImageTk
+
+# Create a tkinter window
+# root = tk.Tk()
+# root.geometry("800x600")  # Set the window size
+
+def home():
+    root2 = Tk()
+    root2.title("Ecommerce Website Home Page")
+    root2.geometry("1360x1000")
+    # root2.attributes('-fullscreen', True)  # For Linux/Unix and macOS
+
+
+    # Open and resize the background image
+    background_image = Image.open("test.jpg")
+    background_image = background_image.resize((1360, 1000))
+
+    # Convert the image to a PhotoImage object
+    background_image = ImageTk.PhotoImage(background_image)
+
+    # Create a Label widget to display the background image
+    background_label = tk.Label(root2, image=background_image)
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    ent2 = Label(root2, text = "E-Commerce Application System",width=68,height=2,font='Times 26 bold',bg='grey42',fg='white')
+    ent2.place(x = -50,y = 0)
+
+
+
+
+    Button(root2, text= "Sign Up",width=10,bg='grey42',fg='white',font='Times 12 bold', command=register).place(x = 950, y = 45)    
+    Button(root2, text= "Sign In",width=10,bg='grey42',fg='white',font='Times 12 bold', command='').place(x = 1070, y = 45) 
+    Button(root2, text= "Exit",width=10,bg='grey42',fg='white',font='Times 12 bold', command=root2.destroy).place(x = 1190, y = 45) 
+
+
+
+root2 = Tk()
+root2.title("Ecommerce Website Home Page")
+root2.geometry("1360x1000")
+# root2.attributes('-fullscreen', True)  # For Linux/Unix and macOS
+
+
+# Open and resize the background image
+background_image = Image.open("test.jpg")
+background_image = background_image.resize((1360, 1000))
+
+# Convert the image to a PhotoImage object
+background_image = ImageTk.PhotoImage(background_image)
+
+# Create a Label widget to display the background image
+background_label = tk.Label(root2, image=background_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+ent2 = Label(root2, text = "E-Commerce Application System",width=68,height=2,font='Times 26 bold',bg='grey42',fg='white')
+ent2.place(x = -50,y = 0)
+
+
+
+
+def register():
+    root2.destroy()
+    root1 = Tk()
+    root1.title("Login Page")
+    root1.geometry("1360x1000")
+    background_image = Image.open("page.jpg")
+    background_image = background_image.resize((1360, 1000))
+
+# Convert the image to a PhotoImage object
+    background_image = ImageTk.PhotoImage(background_image)
+
+# Create a Label widget to display the background image
+    background_label = tk.Label(root1, image=background_image)
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+
+    def go_back():
+            root1.destroy()
+            home()
+
+
+    
+    # my_font=('times', 20, 'bold')
+    b1 = Button(root1, text='Back', font='times 13 bold', bg='white', command =go_back)
+    b1.place(x=10,y=10)
+
+
+    ent1 = Label(root1, text = "Register",fg='black', width=15,font='times 18 bold',pady=40)
+    ent1.place(x = 600,y = 30)
+
+    ent1 = Label(root1, text = "Customer_Name",bg='white', width=15,font='times 13 bold')
+    ent1.place(x = 500,y = 160)
+    ent2 = Label(root1, text = "Username",bg='white', width=15,font='times 13 bold')
+    ent2.place(x = 500,y = 195)
+    ent3 = Label(root1, text = "Customer_email",bg='white', width=15,font='times 13 bold')
+    ent3.place(x = 500,y = 230)
+    ent4 = Label(root1, text = "Password",bg='white', width=15,font='times 13 bold')
+    ent4.place(x = 500,y = 265)
+    text_field1 = Entry(root1, width = 20,bg='white',font='times 13 bold')
+    text_field1.place(x = 690, y = 160)
+    text_field2 = Entry(root1, width = 20,bg='white',font='times 13 bold')
+    text_field2.place(x = 690, y = 195)
+    text_field3 = Entry(root1, width = 20,bg='white', font='times 13 bold')
+    text_field3.place(x = 690, y = 230)
+    text_field4 = Entry(root1, width = 20,bg='white', font='times 13 bold', show="*")
+    text_field4.place(x = 690, y = 265)
+
+
+
+    Button(root1, text= "Submit",bg='white',fg='black',font='times 12 bold', command='').place(x = 700, y = 300)  
+    root1.mainloop() 
+
+    
+def login():
+    root2.destroy()
+    root1 = Tk()
+    root1.title("Login Page")
+    # root1.geometry("1360x1000")
+    # root1.configure(bg='#333333')
+    # bg = PhotoImage(file = "Login_Back.gif")
+    # label1 = Label( root1, image = bg)
+    # label1.place(x = 0, y = 0)
+    root1.geometry("1360x1000")
+    background_image = Image.open("im2.jpg")
+    background_image = background_image.resize((1360, 1000))
+
+# Convert the image to a PhotoImage object
+    background_image = ImageTk.PhotoImage(background_image)
+
+# Create a Label widget to display the background image
+    background_label = tk.Label(root1, image=background_image)
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+
+
+    def go_back():
+        root1.destroy()
+        home()
+
+
+    
+    my_font=('times', 12, 'bold')
+    b1 = Button(root1, text='Back', font=my_font,bg='white', command =go_back)
+    b1.place(x=10,y=10)
+
+
+    
+    ent1 = Label(root1, text = "Login",fg='black', width=15,font='times 18 bold',pady=40)
+    ent1.place(x = 600,y = 30)
+
+    ent2 = Label(root1, text = "Username",bg='white', width=15,font='times 13 bold')
+    ent2.place(x = 500,y = 195)
+
+    ent4 = Label(root1, text = "Password",bg='white', width=15,font='times 13 bold')
+    ent4.place(x = 500,y = 265)
+
+    text_field2 = Entry(root1, width = 20,bg='white',font='times 13 bold')
+    text_field2.place(x = 690, y = 195)
+
+    text_field3 = Entry(root1, width = 20,bg='white',font='times 13 bold')
+    text_field3.place(x = 690, y = 265)
+
+
+        
+   
+    #     frame, text="Login", bg="#FF3399", fg="#FFFFFF", font=("Arial", 16), command=login)
+
+    
+
+    Button(root1, text= "Submit",bg='white',fg='black',font='times 12 bold' ,command="").place(x = 700, y = 330) 
+    root1.mainloop() 
+
+
+
+
+
+
+Button(root2, text= "Sign Up",width=10,bg='grey42',fg='white',font='Times 12 bold', command=register).place(x = 950, y = 45)    
+Button(root2, text= "Sign In",width=10,bg='grey42',fg='white',font='Times 12 bold', command=login).place(x = 1070, y = 45) 
+Button(root2, text= "Exit",width=10,bg='grey42',fg='white',font='Times 12 bold', command=root2.destroy).place(x = 1190, y = 45) 
+
+
+
+
+# Add content to the window if needed
+# label = tk.Label(root, text="This is a tkinter window with a background image")
+# label.pack()
+
+# Run the tkinter main loop
+root2.mainloop()

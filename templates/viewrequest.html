@@ -1,0 +1,59 @@
+{% extends "ownerhome.html" %}
+
+{% block content %}
+<div class="col-md-12">
+   <br><br> <center>
+        <h1>View Request Form User</h1>
+    </center>
+</div><br>
+
+<!-- Display messages -->
+{% if messages %}
+    <div class="col-md-12">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<center>
+<!-- File Upload Form -->
+<table style="border: 2px solid rgb(203 217 3);width: 100%;overflow:auto">
+    <tr>
+        <th class="text-warning bg-dark">Id</th>
+        <th class="text-warning bg-dark">User Email</th>
+        <th class="text-warning bg-dark">Owner Email</th>
+        <th class="text-warning bg-dark">File name</th>
+        <th class="text-warning bg-dark">Secrate Key</th>
+        <th class="text-warning bg-dark">Status</th>
+        <th class="text-warning bg-dark">Action</th>
+    </tr>
+    {% for row in viewfiles %}
+    <tr>
+        <td class="text-info bg-dark">{{ row.id }}</td>
+        <td class="text-info bg-dark">{{ row.receiveremail }}</td>
+        <td class="text-info bg-dark">{{ row.owneremail }}</td>
+        <td class="text-info bg-dark">{{ row.filename }}</td>
+        <td class="text-info bg-dark">{{ row.filekey }}</td>
+        <td class="text-info bg-dark">{{ row.status }}</td>
+        <td class="text-info bg-dark">
+            <a style="color:red" href="{% url 'proviedkey' row.id %}" onclick="return confirmActivation();">
+                Approve Request
+            </a>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+</center>
+
+<script type="text/javascript">
+    function confirmActivation() {
+        return confirm("Are you sure you want to send a request for this file?");
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "userhome.html" %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+  
+            background-color: #f4f4f4;
+        }
+        .containr {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    {% if decrypted_text %}
+    <h2>Decrypted Content of {{ file_name }}</h2>
+    <pre>{{ decrypted_text | safe }}</pre>
+
+
+{% endif %}
+
+    <div class="containr">
+        <h2>Enter Your Key</h2>
+        <form action="{% url 'decrypt' id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="key" placeholder="Enter your key" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+{% endblock %}

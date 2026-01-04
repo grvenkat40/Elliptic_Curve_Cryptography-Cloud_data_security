@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% block content %}
+
+<!--  contact -->
+<div class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage text_align_center">
+                    <h2>Sign in</h2>
+                </div>
+            </div>
+            <div class="col-md-10 offset-md-1">
+
+                <!-- Alert Messages -->
+                {% if messages %}
+                <div class="col-md-12">
+                    {% for message in messages %}
+                    <div class="alert alert-warning" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Login Form -->
+                <form id="request" class="main_form" method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class="contactus" name="login_type" required>
+                                <option value="" disabled selected>Select Login Type</option>
+                                <option value="owner">Data Owner</option>
+                                <option value="user">Data User</option>
+                                <option value="cloudserver">Cloud Server</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <input class="contactus" placeholder="Email" type="email" name="email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="contactus" placeholder="Password" type="password" name="password" required>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="send_btn" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end contact -->
+
+
+
+{% endblock %}
