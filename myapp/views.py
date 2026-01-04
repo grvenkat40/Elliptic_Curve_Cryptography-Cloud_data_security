@@ -69,7 +69,7 @@ def login(request):
                 owner = ownerreg.objects.get(email=email, password=password, status='Activated')
                 request.session['email'] = owner.email
                 request.session['name'] = owner.name
-                return render(request, ownerhomepage, {'owner': owner})
+                return render(request, ownerhomepage, {'name': owner.name})
             except ownerreg.DoesNotExist:
                 messages.error(request, "Invalid owner credentials or account not activated.")
                 return render(request, loginpage)
@@ -164,8 +164,15 @@ def acceptowner(request, id):
     messages.success(request, f'The owner "{data.name}" has been successfully activated.')
     return redirect("viewowners")
 
-def ownerhome(req):
-    return render(req, ownerhomepage)
+def ownerhome(request):
+    email = request.session.get('email')
+
+    if email:
+        owner = ownerreg.objects.get(email=email)
+        return render(request, ownerhomepage, {'name': owner.name})
+    else:
+        return redirect('login')
+
 
 def userhome(request):
     # Ensure that you retrieve the user's email from the session
@@ -371,8 +378,8 @@ def sendkey(request, id):
     data.status = 'keysent'
     data.otp = random.randint(000000,999999)
     data.save()
-    email_subject = 'Key Details'
-    email_message = f'Hello {data.requester},\n\nWelcome To Our Website!\n\nHere are your Key details:\nEmail: {data.requester}\nKey: {data.otp}\n\nPlease keep this information safe.\n\nBest regards,\nYour Website Team'
+    email_subject = 'Decrypt Key Details'
+    email_message = f'Hello {data.requester},\n\nWelcome To Our Website!\n\nHere are your Key details:\nEmail: {data.requester}\nKey: {data.otp}\n\nPlease keep this information private.\n\nBest regards,\n CSIT B-12 Team'
     send_mail(email_subject, email_message, 'cse.takeoff@gmail.com', [data.requester])
     messages.success(request, 'Key Sent Successfully!')
     return redirect('viewrequests')

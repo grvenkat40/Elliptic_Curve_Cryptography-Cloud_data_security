@@ -162,7 +162,7 @@ def decrypt_message(private_key, encrypted_message):
     return unpadded_message
 
 # Example usage
-message = b"Hello CSIT B-12 "
+message = b"Hello, We are CSIT B-12 "
 encrypted_message = encrypt_message(loaded_public_key, message)
 decrypted_message = decrypt_message(loaded_private_key, encrypted_message)
 print(encrypted_message)
