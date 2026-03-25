@@ -160,13 +160,6 @@ The system was tested using:
 
 ---
 
-## 👨‍💻 Author
-
-**Venkat (Goondam Ramalingam Venkat)**  
-Aspiring Data Engineer | Python Developer | Cloud Enthusiast 🚀
-
----
-
 ## ⭐ Final Note
 
 This project demonstrates how modern cryptography (ECC) can be used to build **secure, scalable, and efficient cloud systems**, making it highly relevant for real-world applications in cloud computing and data engineering.
